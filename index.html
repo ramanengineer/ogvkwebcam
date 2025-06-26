@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ogvk.webcam</title>
   <meta name="description" content="Join ogvk.webcam for 24/7 live Twitch streams and community engagement. Follow streamers like xwlasxd, HeavySamLifts, and more. Access via ogvk.webcam/@username">
   <meta name="keywords" content="GGQP, live streaming, Twitch, community, xwlasxd, HeavySamLifts, ShadyPeterLive, ramkrishanghoil, zxckjsdv, brbcompiling, TrevorMarksman, ValentineCoolio, LegacyMartian, MovieByMacaffe, BizaroPeter, GynaWENS, xvbrznem, Discord, YouTube, Twitch, TikTok, Instagram, Snapchat, Reddit, Twitter">
@@ -14,15 +13,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ogvk.webcam">
   <meta property="og:site_name" content="ogvk.webcam">
-  <meta property="og:image" content="https://i.postimg.cc/zfSxRGYF/Binge-Watchers-prfile-png-1.png">
-  <meta property="og:image:alt" content="ogvk.webcam Logo">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ogvk.webcam - Live Twitch Streaming & Community Hub">
   <meta name="twitter:description" content="Daily live Twitch streams at ogvk.webcam! Join xwlasxd, HeavySamLifts, and more for community fun. Access via ogvk.webcam/@username">
-  <meta name="twitter:image" content="https://i.postimg.cc/zfSxRGYF/Binge-Watchers-prfile-png-1.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="canonical" href="https://ogvk.webcam">
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/zfSxRGYF/Binge-Watchers-prfile-png-1.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
     * {
       box-sizing: border-box;
@@ -325,6 +320,62 @@
       background: #7289da;
     }
 
+    .roster-container {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #222;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    body.light-mode .roster-container {
+      background: #e0e0e0;
+    }
+
+    .roster-container h2 {
+      margin-bottom: 1rem;
+    }
+
+    .roster-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .roster-item {
+      background: #2a2a2a;
+      padding: 0.5rem;
+      border-radius: 4px;
+      width: 100%;
+      max-width: 250px;
+      text-align: center;
+    }
+
+    body.light-mode .roster-item {
+      background: #fff;
+    }
+
+    .roster-item a {
+      color: #6441a5;
+      font-weight: bold;
+    }
+
+    body.light-mode .roster-item a {
+      color: #4a90e2;
+    }
+
+    .roster-item .countdown {
+      font-size: 0.9rem;
+      color: #b0b0b0;
+    }
+
+    body.light-mode .roster-item .countdown {
+      color: #666;
+    }
+
     @media (max-width: 480px) {
       body {
         padding: 0.5rem;
@@ -354,6 +405,10 @@
       .stream-status-button {
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
+      }
+
+      .roster-item {
+        max-width: 100%;
       }
     }
   </style>
@@ -406,14 +461,19 @@
     <div class="community-container">
       <a class="community-discord-button" href="https://discord.gg/ymwPhfz2">Join ogvk.webcam Community Discord</a>
     </div>
+
+    <div class="roster-container">
+      <h2>Streamer Roster</h2>
+      <div class="roster-grid" id="roster-grid"></div>
+    </div>
   </main>
 
   <script>
     const streamers = [
       {
-        id: 'xwlasxd', name: 'xwlasxd', url: 'https://twitch.tv/xwlasxd', discord: 'https://discord.gg/abrtMaCsyu',
+        id: 'xwlasxd', name: 'xwlasxd', url: 'https://twitch.tv/xwlasxd', discord: 'https://joindiscord.me/#xwlasxd',
         social: {
-          discord: { webUrl: 'https://discord.gg/abrtMaCsyu', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@xwlasxd', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/xwlasxd', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@xwlasxd', icon: 'fab fa-tiktok' },
@@ -422,13 +482,13 @@
           reddit: { webUrl: 'https://reddit.com/r/xwlasxd', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/xwlasxd', icon: 'fab fa-twitter' }
         },
-        startHour: 0, endHour: 3, streamingDays: [1, 3, 5, 0],
+        startHour: 0, endHour: 3, streamingDays: [0, 1, 3, 5],
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'HeavySamLifts', name: 'HeavySamLifts', url: 'https://twitch.tv/HeavySamLifts', discord: 'https://discord.gg/36U3wCXXfe',
+        id: 'HeavySamLifts', name: 'HeavySamLifts', url: 'https://twitch.tv/HeavySamLifts', discord: 'https://joindiscord.me/#HeavySamLifts',
         social: {
-          discord: { webUrl: 'https://discord.gg/36U3wCXXfe', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@HeavySamLifts', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/HeavySamLifts', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@HeavySamLifts', icon: 'fab fa-tiktok' },
@@ -437,13 +497,13 @@
           reddit: { webUrl: 'https://reddit.com/r/HeavySamLifts', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/HeavySamLifts', icon: 'fab fa-twitter' }
         },
-        startHour: 3, endHour: 6, streamingDays: [1, 3, 5, 0],
+        startHour: 3, endHour: 6, streamingDays: [0, 1, 3, 5],
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'ShadyPeterLive', name: 'ShadyPeterLive', url: 'https://twitch.tv/ShadyPeterLive', discord: 'https://discord.gg/QkTWZrT6',
+        id: 'ShadyPeterLive', name: 'ShadyPeterLive', url: 'https://twitch.tv/ShadyPeterLive', discord: 'https://joindiscord.me/#ShadyPeterLive',
         social: {
-          discord: { webUrl: 'https://discord.gg/QkTWZrT6', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@ShadyPeterLive', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/ShadyPeterLive', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@ShadyPeterLive', icon: 'fab fa-tiktok' },
@@ -452,13 +512,13 @@
           reddit: { webUrl: 'https://reddit.com/r/ShadyPeterLive', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/ShadyPeterLive', icon: 'fab fa-twitter' }
         },
-        startHour: 6, endHour: 9, streamingDays: [1, 3, 5, 0],
+        startHour: 6, endHour: 9, streamingDays: [0, 1, 3, 5],
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'ramkrishanghoil', name: 'ramkrishanghoil', url: 'https://twitch.tv/ramkrishanghoil', discord: 'https://discord.gg/vTd4bxJX',
+        id: 'ramkrishanghoil', name: 'ramkrishanghoil', url: 'https://twitch.tv/ramkrishanghoil', discord: 'https://joindiscord.me/#ramkrishanghoil',
         social: {
-          discord: { webUrl: 'https://discord.gg/vTd4bxJX', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@ramkrishanghoil', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/ramkrishanghoil', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@ramkrishanghoil', icon: 'fab fa-tiktok' },
@@ -467,13 +527,13 @@
           reddit: { webUrl: 'https://reddit.com/r/ramkrishanghoil', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/ramkrishanghoil', icon: 'fab fa-twitter' }
         },
-        startHour: 9, endHour: 12, streamingDays: [1, 3, 5, 0],
+        startHour: 9, endHour: 12, streamingDays: [0, 1, 3, 5],
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'zxckjsdv', name: 'zxckjsdv', url: 'https://twitch.tv/zxckjsdv', discord: 'https://discord.gg/mTT2SBmq',
+        id: 'zxckjsdv', name: 'zxckjsdv', url: 'https://twitch.tv/zxckjsdv', discord: 'https://joindiscord.me/#zxckjsdv',
         social: {
-          discord: { webUrl: 'https://discord.gg/mTT2SBmq', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@zxckjsdv', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/zxckjsdv', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@zxckjsdv', icon: 'fab fa-tiktok' },
@@ -482,13 +542,13 @@
           reddit: { webUrl: 'https://reddit.com/r/zxckjsdv', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/zxckjsdv', icon: 'fab fa-twitter' }
         },
-        startHour: 12, endHour: 15, streamingDays: [1, 3, 5, 0],
+        startHour: 12, endHour: 15, streamingDays: [0, 1, 3, 5],
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'brbcompiling', name: 'brbcompiling', url: 'https://twitch.tv/brbcompiling', discord: 'https://discord.gg/gUdRv6AU',
+        id: 'brbcompiling', name: 'brbcompiling', url: 'https://twitch.tv/brbcompiling', discord: 'https://joindiscord.me/#brbcompiling',
         social: {
-          discord: { webUrl: 'https://discord.gg/gUdRv6AU', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@brbcompiling', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/brbcompiling', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@brbcompiling', icon: 'fab fa-tiktok' },
@@ -497,13 +557,13 @@
           reddit: { webUrl: 'https://reddit.com/r/brbcompiling', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/brbcompiling', icon: 'fab fa-twitter' }
         },
-        startHour: 15, endHour: 18, streamingDays: [1, 3, 5, 0],
+        startHour: 15, endHour: 18, streamingDays: [0, 1, 3, 5],
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'TrevorMarksman', name: 'TrevorMarksman', url: 'https://twitch.tv/TrevorMarksman', discord: 'https://discord.gg/ZSKWZK2U',
+        id: 'TrevorMarksman', name: 'TrevorMarksman', url: 'https://twitch.tv/TrevorMarksman', discord: 'https://joindiscord.me/#TrevorMarksman',
         social: {
-          discord: { webUrl: 'https://discord.gg/ZSKWZK2U', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@TrevorMarksman', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/TrevorMarksman', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@TrevorMarksman', icon: 'fab fa-tiktok' },
@@ -516,9 +576,9 @@
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'ValentineCoolio', name: 'ValentineCoolio', url: 'https://twitch.tv/ValentineCoolio', discord: 'https://discord.gg/apgxTaBj',
+        id: 'ValentineCoolio', name: 'ValentineCoolio', url: 'https://twitch.tv/ValentineCoolio', discord: 'https://joindiscord.me/#ValentineCoolio',
         social: {
-          discord: { webUrl: 'https://discord.gg/apgxTaBj', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@ValentineCoolio', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/ValentineCoolio', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@ValentineCoolio', icon: 'fab fa-tiktok' },
@@ -531,9 +591,9 @@
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'LegacyMartian', name: 'LegacyMartian', url: 'https://twitch.tv/LegacyMartian', discord: 'https://discord.gg/4MxYRbyZ',
+        id: 'LegacyMartian', name: 'LegacyMartian', url: 'https://twitch.tv/LegacyMartian', discord: 'https://joindiscord.me/#LegacyMartian',
         social: {
-          discord: { webUrl: 'https://discord.gg/4MxYRbyZ', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@LegacyMartian', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/LegacyMartian', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@LegacyMartian', icon: 'fab fa-tiktok' },
@@ -546,9 +606,9 @@
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'MovieByMacaffe', name: 'MovieByMacaffe', url: 'https://twitch.tv/MovieByMacaffe', discord: 'https://discord.gg/mDddbJ8J',
+        id: 'MovieByMacaffe', name: 'MovieByMacaffe', url: 'https://twitch.tv/MovieByMacaffe', discord: 'https://joindiscord.me/#MovieByMacaffe',
         social: {
-          discord: { webUrl: 'https://discord.gg/mDddbJ8J', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@MovieByMacaffe', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/MovieByMacaffe', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@MovieByMacaffe', icon: 'fab fa-tiktok' },
@@ -561,9 +621,9 @@
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'BizaroPeter', name: 'BizaroPeter', url: 'https://twitch.tv/BizaroPeter', discord: 'https://discord.gg/tPWpx28U',
+        id: 'BizaroPeter', name: 'BizaroPeter', url: 'https://twitch.tv/BizaroPeter', discord: 'https://joindiscord.me/#BizaroPeter',
         social: {
-          discord: { webUrl: 'https://discord.gg/tPWpx28U', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@BizaroPeter', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/BizaroPeter', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@BizaroPeter', icon: 'fab fa-tiktok' },
@@ -576,9 +636,9 @@
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'GynaWENS', name: 'GynaWENS', url: 'https://twitch.tv/GynaWENS', discord: 'https://discord.gg/cF9aRQ8B',
+        id: 'GynaWENS', name: 'GynaWENS', url: 'https://twitch.tv/GynaWENS', discord: 'https://joindiscord.me/#GynaWENS',
         social: {
-          discord: { webUrl: 'https://discord.gg/cF9aRQ8B', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@GynaWENS', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/GynaWENS', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@GynaWENS', icon: 'fab fa-tiktok' },
@@ -587,13 +647,13 @@
           reddit: { webUrl: 'https://reddit.com/r/GynaWENS', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/GynaWENS', icon: 'fab fa-twitter' }
         },
-        startHour: 15, endHour: 17, streamingDays: [2, 4, 6],
+        startHour: 15, endHour: 18, streamingDays: [2, 4, 6],
         followers: 200000, subscribers: 20000
       },
       {
-        id: 'xvbrznem', name: 'xvbrznem', url: 'https://twitch.tv/xvbrznem', discord: 'https://discord.gg/vV623V4F',
+        id: 'xvbrznem', name: 'xvbrznem', url: 'https://twitch.tv/xvbrznem', discord: 'https://joindiscord.me/#xvbrznem',
         social: {
-          discord: { webUrl: 'https://discord.gg/vV623V4F', icon: 'fab fa-discord' },
+          discord: { webUrl: 'https://joindiscord.me', icon: 'fab fa-discord' },
           youtube: { webUrl: 'https://youtube.com/@xvbrznem', icon: 'fab fa-youtube' },
           twitch: { webUrl: 'https://twitch.tv/xvbrznem', icon: 'fab fa-twitch' },
           tiktok: { webUrl: 'https://tiktok.com/@xvbrznem', icon: 'fab fa-tiktok' },
@@ -602,7 +662,7 @@
           reddit: { webUrl: 'https://reddit.com/r/xvbrznem', icon: 'fab fa-reddit' },
           twitter: { webUrl: 'https://twitter.com/xvbrznem', icon: 'fab fa-twitter' }
         },
-        startHour: 18, endHour: 24, streamingDays: [1, 2, 3, 4, 5, 6, 0],
+        startHour: 18, endHour: 24, streamingDays: [0, 1, 2, 3, 4, 5, 6],
         followers: 200000, subscribers: 20000
       }
     ];
@@ -612,6 +672,7 @@
       const main = document.querySelector('.main');
       const template = document.getElementById('streamer-template');
       const themeToggle = document.getElementById('theme-toggle');
+      const rosterGrid = document.getElementById('roster-grid');
       let isLiveNowSelected = false;
 
       // Theme toggle functionality
@@ -676,11 +737,11 @@
 
         const nameLink = content.querySelector('.channel-name a');
         nameLink.href = streamer.url;
-        nameLink.textContent = streamer.name;
+        nameLink.textContent = `@${streamer.name}`;
 
         const schedule = content.querySelector('.channel-schedule');
         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        const streamingDays = streamer.streamingDays.map(day => days[day]).join(', ');
+        const streamingDays = streamer.streamingDays.length === 7 ? 'Daily' : streamer.streamingDays.map(day => days[day]).join(', ');
         schedule.textContent = `Streams ${streamingDays} from ${formatTime(streamer.startHour)} to ${formatTime(streamer.endHour)} ${timeZone}`;
 
         const statusButton = content.querySelector('.stream-status-button');
@@ -761,6 +822,48 @@
         return null;
       }
 
+      function updateRoster() {
+        const nzTime = getNzTime(new Date());
+        const currentHour = nzTime.getHours();
+        rosterGrid.innerHTML = '';
+        streamers.forEach(streamer => {
+          let countdownText = '';
+          let nextStreamTime = new Date(nzTime);
+          if (isStreamingDay(streamer) && currentHour >= streamer.startHour && currentHour < streamer.endHour) {
+            countdownText = 'Live Now!';
+          } else {
+            if (!isStreamingDay(streamer)) {
+              let nextDay = nzTime.getDay();
+              let daysUntilNext = 1;
+              while (!streamer.streamingDays.includes((nextDay + daysUntilNext) % 7)) daysUntilNext++;
+              nextStreamTime.setDate(nzTime.getDate() + daysUntilNext);
+              nextStreamTime.setHours(streamer.startHour, 0, 0, 0);
+            } else if (currentHour < streamer.startHour) {
+              nextStreamTime.setHours(streamer.startHour, 0, 0, 0);
+            } else {
+              let nextDay = nzTime.getDay();
+              let daysUntilNext = 1;
+              while (!streamer.streamingDays.includes((nextDay + daysUntilNext) % 7)) daysUntilNext++;
+              nextStreamTime.setDate(nzTime.getDate() + daysUntilNext);
+              nextStreamTime.setHours(streamer.startHour, 0, 0, 0);
+            }
+            const timeDiff = nextStreamTime - nzTime;
+            const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            countdownText = timeDiff <= 0 ? 'Should be live soon!' : `${hours}h ${minutes}m ${seconds}s`;
+          }
+
+          const rosterItem = document.createElement('div');
+          rosterItem.className = 'roster-item';
+          rosterItem.innerHTML = `
+            <a href="${streamer.url}">@${streamer.name}</a>
+            <div class="countdown">${countdownText}</div>
+          `;
+          rosterGrid.appendChild(rosterItem);
+        });
+      }
+
       streamers.forEach(streamer => {
         const clone = template.content.cloneNode(true);
         const content = clone.querySelector('.streamer-content');
@@ -795,6 +898,7 @@
           isLiveNowSelected = !!getCurrentStreamer();
           selectStreamer(isLiveNowSelected ? 'LIVE' : selectedStreamer.id);
         }
+        updateRoster();
       }
 
       init();
@@ -864,7 +968,7 @@
 
           const schedule = content.querySelector('.channel-schedule');
           const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-          const streamingDays = streamer.streamingDays.map(day => days[day]).join(', ');
+          const streamingDays = streamer.streamingDays.length === 7 ? 'Daily' : streamer.streamingDays.map(day => days[day]).join(', ');
           schedule.textContent = `Streams ${streamingDays} from ${formatTime(streamer.startHour)} to ${formatTime(streamer.endHour)} ${timeZone}`;
         });
 
@@ -881,6 +985,8 @@
             selectStreamer('LIVE');
           }
         }
+
+        updateRoster();
       }, 1000);
     });
   </script>
